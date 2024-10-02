@@ -10,7 +10,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ComposeCompilerApi
 import androidx.compose.ui.Modifier
 import com.marceme.mvocabulary.ui.theme.ui.navigation.Screen
 
@@ -19,29 +18,30 @@ import com.marceme.mvocabulary.ui.theme.ui.navigation.Screen
 fun FlashCardAppBar(
     onAddIconClicked: () -> Unit,
     onRepeatIconClicked: () -> Unit,
-    canNavigateBack: Boolean,
+    currentRoute: String,
     navigateUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    TopAppBar(
-        title = {
-            if(canNavigateBack) {
-                Text("Flash")
-            }else{
-                Text("Create Word")
-            } },
-        actions = {
-            if(canNavigateBack){
-                IconButton(onClick = navigateUp) {
-                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Add")
-                }
-            }else {
-                IconButton(onClick = onAddIconClicked) {
-                    Icon(imageVector = Icons.Filled.Add, contentDescription = "Add")
-                }
-                IconButton(onClick = onRepeatIconClicked) {
-                    Icon(imageVector = Icons.Filled.Repeat, contentDescription = "Shuffle")
-                }
-            }
-        })
+    when (currentRoute) {
+        Screen.FlashCard.route -> {
+            TopAppBar(title = { Text("FlashCards") },
+                actions = {
+                    IconButton(onClick = onAddIconClicked) {
+                        Icon(imageVector = Icons.Filled.Add, contentDescription = "Add")
+                    }
+                    IconButton(onClick = onRepeatIconClicked) {
+                        Icon(imageVector = Icons.Filled.Repeat, contentDescription = "Shuffle")
+                    }
+                })
+        }
+
+        Screen.AddWord.route -> {
+            TopAppBar(title = { Text("Create a word card") },
+                navigationIcon = {
+                    IconButton(onClick = navigateUp) {
+                        Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
+                    }
+                })
+        }
+    }
 }

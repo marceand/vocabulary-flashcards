@@ -39,14 +39,16 @@ class MainActivity : ComponentActivity() {
 fun WordFlashCardApp(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = backStackEntry?.destination?.route ?: Screen.FlashCard.route
 
     Scaffold(
-        topBar = { FlashCardAppBar(
-            onAddIconClicked = { navController.navigate(Screen.AddWord.route)},
-            onRepeatIconClicked = {  },
-            canNavigateBack = navController.previousBackStackEntry != null,
-            navigateUp = {navController.navigateUp()}
-        )
+        topBar = {
+            FlashCardAppBar(
+                onAddIconClicked = { navController.navigate(Screen.AddWord.route) },
+                onRepeatIconClicked = { },
+                currentRoute = currentRoute,
+                navigateUp = { navController.navigateUp() }
+            )
         },
         content = {
             WordCardContent(navController, it)
