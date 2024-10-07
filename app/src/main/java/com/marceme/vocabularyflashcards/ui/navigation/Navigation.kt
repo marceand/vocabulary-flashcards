@@ -10,7 +10,7 @@ import com.alexstyl.swipeablecard.SwipeableCardState
 import com.marceme.mvocabulary.ui.theme.model.Word
 import com.marceme.mvocabulary.ui.theme.ui.screen.FlashCardScreen
 import com.marceme.mvocabulary.ui.theme.ui.navigation.Screen
-import com.marceme.mvocabulary.ui.theme.ui.screen.AddWordScreen
+import com.marceme.mvocabulary.ui.theme.ui.screen.AddCardScreen
 
 
 @Composable
@@ -30,7 +30,7 @@ fun NavigationStack(
             FlashCardScreen(states =states)
         }
         composable(route = Screen.AddWord.route) {
-            AddWordScreen()
+            AddCardScreen()
         }
     }
 
