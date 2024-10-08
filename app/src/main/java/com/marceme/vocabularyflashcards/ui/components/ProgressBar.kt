@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun ProgressIndicator(
+fun ProgressBar(
     modifier: Modifier = Modifier,
     value: Float = 0.5f,
     trackHeight: Dp = 10.dp,
@@ -53,8 +53,8 @@ fun ProgressIndicator(
 
 @Preview
 @Composable
-fun ProgressIndicatorPreview(modifier: Modifier = Modifier) {
-    ProgressIndicator(
+fun ProgressBarPreview(modifier: Modifier = Modifier) {
+    ProgressBar(
         modifier = modifier,
         trackHeight = 20.dp,
         value = 0.5f

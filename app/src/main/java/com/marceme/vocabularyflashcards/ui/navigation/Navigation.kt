@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.alexstyl.swipeablecard.SwipeableCardState
 import com.marceme.mvocabulary.ui.theme.model.Word
-import com.marceme.mvocabulary.ui.theme.ui.screen.FlashCardScreen
+import com.marceme.vocabularyflashcards.ui.screen.FlashCardScreen
 import com.marceme.mvocabulary.ui.theme.ui.navigation.Screen
 import com.marceme.mvocabulary.ui.theme.ui.screen.AddCardScreen
 
