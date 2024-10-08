@@ -41,9 +41,16 @@ import com.marceme.vocabularyflashcards.ui.theme.ToolbarColor
 
 
 @Composable
-fun FlashCardScreen(modifier: Modifier = Modifier, states: List<Pair<Word, SwipeableCardState>>) {
+fun FlashCardScreen(
+    modifier: Modifier = Modifier, states: List<Pair<Word, SwipeableCardState>>,
+    onAddIconClicked: () -> Unit,
+    onRepeatIconClicked: () -> Unit
+) {
     Column(modifier = modifier) {
-        FlashCardsTopBar()
+        FlashCardsTopBar(
+            onAddIconClicked = onAddIconClicked,
+            onRepeatIconClicked = onRepeatIconClicked
+        )
         FlashCardsContent(states)
     }
 }
@@ -97,7 +104,11 @@ private fun ProgressIndicator(modifier: Modifier = Modifier) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun FlashCardsTopBar(modifier: Modifier = Modifier) {
+private fun FlashCardsTopBar(
+    modifier: Modifier = Modifier,
+    onAddIconClicked: () -> Unit,
+    onRepeatIconClicked: () -> Unit
+) {
     TopAppBar(
         modifier = modifier,
         colors = TopAppBarDefaults.topAppBarColors(
@@ -107,10 +118,10 @@ private fun FlashCardsTopBar(modifier: Modifier = Modifier) {
         ),
         title = { Text("Flashcards", fontWeight = FontWeight.Medium) },
         actions = {
-            IconButton(onClick = { }) {
+            IconButton(onClick = onAddIconClicked) {
                 Icon(imageVector = Icons.Filled.Add, contentDescription = "Add")
             }
-            IconButton(onClick = { }) {
+            IconButton(onClick = onRepeatIconClicked) {
                 Icon(imageVector = Icons.Filled.Repeat, contentDescription = "Shuffle")
             }
         })
@@ -157,7 +168,7 @@ private fun FlashCards(
 fun FlashCardScreenPreview() {
     val states = words.reversed()
         .map { it to rememberSwipeableCardState() }
-    FlashCardScreen(states = states)
+    FlashCardScreen(onAddIconClicked = {}, onRepeatIconClicked = {}, states = states)
 }
 
 
