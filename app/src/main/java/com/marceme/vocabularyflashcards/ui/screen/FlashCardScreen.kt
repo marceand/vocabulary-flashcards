@@ -34,9 +34,9 @@ import com.marceme.mvocabulary.ui.theme.model.Word
 import com.marceme.mvocabulary.ui.theme.model.words
 import com.marceme.vocabularyflashcards.ui.components.ProgressBar
 import com.marceme.vocabularyflashcards.ui.components.WordCard
-import com.marceme.vocabularyflashcards.ui.theme.ActiveTrackColor
-import com.marceme.vocabularyflashcards.ui.theme.BackgroundColor
-import com.marceme.vocabularyflashcards.ui.theme.InactiveTrackColor
+import com.marceme.vocabularyflashcards.ui.theme.TrackActiveColor
+import com.marceme.vocabularyflashcards.ui.theme.ScreenBackgroundColor
+import com.marceme.vocabularyflashcards.ui.theme.TrackInactiveColor
 import com.marceme.vocabularyflashcards.ui.theme.ToolbarColor
 
 
@@ -59,7 +59,7 @@ fun FlashCardScreen(
 private fun FlashCardsContent(states: List<Pair<Word, SwipeableCardState>>) {
     Column(
         modifier = Modifier
-            .background(BackgroundColor)
+            .background(ScreenBackgroundColor)
             .fillMaxSize(),
         verticalArrangement = Arrangement.Center
     ) {
@@ -96,8 +96,8 @@ private fun ProgressIndicator(modifier: Modifier = Modifier) {
         ProgressBar(
             value = 0.5f,
             trackHeight = 10.dp,
-            activeColor = ActiveTrackColor,
-            inactiveColor = InactiveTrackColor
+            activeColor = TrackActiveColor,
+            inactiveColor = TrackInactiveColor
         )
     }
 }
